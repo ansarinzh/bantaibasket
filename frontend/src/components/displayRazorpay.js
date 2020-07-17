@@ -1,6 +1,6 @@
 import {loadScript} from '../App.js';
 
-const __DEV__ = document.domain === "https://basketg.herokuapp.com/"
+const __DEV__ = document.domain === "basketg.herokuapp.com"
 
 async function displayRazorpay(){
     const res = await loadScript('https://checkout.razorpay.com/v1/checkout.js')
