@@ -9,7 +9,7 @@ async function displayRazorpay(){
       return
     }
 
-    const data = await fetch('http://localhost:3000/razorpay',{ method:'POST' }).then((t) => t.json() )
+    const data = await fetch('/razorpay',{ method:'POST' }).then((t) => t.json() )
     console.log(data)
 
     const options = {
