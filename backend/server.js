@@ -8,7 +8,6 @@ import productRoute from './routes/productRoute';
 import orderRoute from './routes/orderRoute';
 import uploadRoute from './routes/uploadRoute';
 
-
 const cors = require('cors')
 const shortid = require('shortid')
 const Razorpay = require('razorpay')
