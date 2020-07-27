@@ -3,6 +3,9 @@ import Order from '../models/orderModel';
 import { isAuth, isAdmin } from '../util';
 
 const router = express.Router();
+var newOrderCreated;
+
+
 
 router.get("/", isAuth, async (req, res) => {
   const orders = await Order.find({}).populate('user');
@@ -33,7 +36,7 @@ router.delete("/:id", isAuth, isAdmin, async (req, res) => {
 });
 
 router.post("/", isAuth, async (req, res) => {
-  const newOrder = new Order({
+    const newOrder = new Order({
     orderItems: req.body.orderItems,
     user: req.user._id,
     shipping: req.body.shipping,
@@ -43,21 +46,21 @@ router.post("/", isAuth, async (req, res) => {
     shippingPrice: req.body.shippingPrice,
     totalPrice: req.body.totalPrice,
   });
-  const newOrderCreated = await newOrder.save();
+  newOrderCreated = await newOrder.save();
   res.status(201).send({ message: "New Order Created", data: newOrderCreated });
 });
 
-router.put("/:id/pay", isAuth, async (req, res) => {
+router.put("/:id/pay",  async (req, res) => {
   const order = await Order.findById(req.params.id);
   if (order) {
     order.isPaid = true;
     order.paidAt = Date.now();
     order.payment = {
-      paymentMethod: 'paypal',
+      paymentMethod: 'Razorpay',
       paymentResult: {
         payerID: req.body.payerID,
-        orderID: req.body.orderID,
-        paymentID: req.body.paymentID
+        orderID: req.body.razorpay_order_id,
+        paymentID: req.body.razorpay_payment_id
       }
     }
     const updatedOrder = await order.save();
@@ -68,3 +71,4 @@ router.put("/:id/pay", isAuth, async (req, res) => {
 });
 
 export default router;
+export {newOrderCreated}

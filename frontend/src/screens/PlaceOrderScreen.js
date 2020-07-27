@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import CheckoutSteps from '../components/CheckoutSteps';
 import { createOrder } from '../actions/orderActions';
 
+
 function PlaceOrderScreen(props) {
 
   const cart = useSelector(state => state.cart);
@@ -43,7 +44,7 @@ function PlaceOrderScreen(props) {
       <div className="placeorder-info">
         <div>
           <h3>
-            Shipping
+            Shipping 
           </h3>
           <div>
             {cart.shipping.address}, {cart.shipping.city},
@@ -85,11 +86,12 @@ function PlaceOrderScreen(props) {
 
                       </div>
                       <div>
-                        Qty: {item.qty}
+                        Qty: {item.qty}<text>{item.unit}</text>
                       </div>
+                      
                     </div>
                     <div className="cart-price">
-                      ${item.selling_price}
+                    &#x20B9;{item.selling_price}
                     </div>
                   </li>
                 )
@@ -101,34 +103,31 @@ function PlaceOrderScreen(props) {
       </div>
       <div className="placeorder-action">
         <ul>
-          <li>
-            <button className="button primary full-width" onClick={placeOrderHandler} >Place Order</button>
-          </li>
+          
           <li>
             <h3>Order Summary</h3>
           </li>
           <li>
             <div>Items</div>
-            <div>${itemsPrice}</div>
+            <div>&#x20B9;{itemsPrice}</div>
           </li>
           <li>
             <div>Shipping</div>
-            <div>${shippingPrice}</div>
+            <div>&#x20B9;{shippingPrice}</div>
           </li>
           <li>
             <div>Tax</div>
-            <div>${taxPrice}</div>
+            <div>&#x20B9;{taxPrice}</div>
           </li>
           <li>
             <div>Order Total</div>
-            <div>${totalPrice}</div>
+            <div>&#x20B9;{totalPrice}</div>
+          </li>
+          <li>
+            <button className="button primary full-width" onClick={placeOrderHandler} >Place Order</button>
           </li>
         </ul>
-
-
-
       </div>
-
     </div>
   </div>
 

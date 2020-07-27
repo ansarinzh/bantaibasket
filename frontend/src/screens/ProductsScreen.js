@@ -15,6 +15,7 @@ function ProductsScreen(props) {
   const [category, setCategory] = useState('');
   const [countInStock, setCountInStock] = useState('');
   const [description, setDescription] = useState('');
+  const [unit, setUnit] = useState('');
   const [uploading, setUploading] = useState(false);
   const productList = useSelector((state) => state.productList);
   const { loading, products, error } = productList;
@@ -55,6 +56,7 @@ function ProductsScreen(props) {
     setBrand(product.brand);
     setCategory(product.category);
     setCountInStock(product.countInStock);
+    setUnit(product.unit);
   };
   const submitHandler = (e) => {
     e.preventDefault();
@@ -69,6 +71,7 @@ function ProductsScreen(props) {
         category,
         countInStock,
         description,
+        unit
       })
     );
   };
@@ -142,6 +145,12 @@ function ProductsScreen(props) {
               <li>
                 <label htmlFor="countInStock">CountInStock</label>
                 <input type="text" name="countInStock" value={countInStock} id="countInStock" onChange={(e) => setCountInStock(e.target.value)} required></input>
+              </li>
+              <li>
+              <label htmlFor="unit">Unit</label>
+              <input type="text" value={unit} name="unit" id="unit" onChange={(e) => setUnit(e.target.value)} required placeholder='Eg. KG or Pcs'>
+                
+              </input>
               </li>
               <li>
                 <label htmlFor="name">Category</label>

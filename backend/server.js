@@ -5,8 +5,8 @@ import bodyParser from 'body-parser';
 import config from './config';
 import userRoute from './routes/userRoute';
 import productRoute from './routes/productRoute';
-import orderRoute from './routes/orderRoute';
 import uploadRoute from './routes/uploadRoute';
+import orderRoute, { newOrderCreated } from './routes/orderRoute';
 
 const cors = require('cors')
 const shortid = require('shortid')
@@ -36,7 +36,6 @@ app.get('*', (req, res) => {
   res.sendFile(path.join(`${__dirname}/../frontend/build/index.html`));
 });
 
-
 const razorpay = new Razorpay({
   key_id: 'rzp_test_LyQUQA2sH58KIZ',
   key_secret: 'dygV0PzE4vQX09g6xRMxvwi1'
@@ -44,7 +43,7 @@ const razorpay = new Razorpay({
 
 app.post('/razorpay', async (req, res) => {
   const payment_capture = 1
-  const amount = 10
+  const amount = newOrderCreated.totalPrice
   const currency = 'INR'
 
   const options = {

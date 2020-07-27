@@ -11,6 +11,10 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@babel/cli": "^7.10.1",
+    "@babel/core": "^7.10.2",
+    "@babel/node": "^7.10.1",
+    "@babel/preset-env": "^7.10.2",
     "aws-sdk": "^2.703.0",
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
@@ -22,16 +26,12 @@
     "mongoose": "^5.9.19",
     "multer": "^1.4.2",
     "multer-s3": "^2.9.0",
+    "nodemon": "^2.0.4",
     "npm-git-install": "^0.3.0",
     "razorpay": "^2.0.6",
-    "shortid": "^2.2.15",
-    "@babel/cli": "^7.10.1",
-    "@babel/core": "^7.10.2",
-    "@babel/node": "^7.10.1",
-    "@babel/preset-env": "^7.10.2",
-    "nodemon": "^2.0.4"
+    "redux-devtools-extension": "^2.13.8",
+    "shortid": "^2.2.15"
   },
-  
   "engines": {
     "node": "12.16.1",
     "npm": "6.13.4"

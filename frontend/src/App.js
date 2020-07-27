@@ -17,7 +17,6 @@ import OrdersScreen from './screens/OrdersScreen';
 import RelatedProductScreen from './screens/RelatedProductScreen';
 import Footer from './components/footer';
 
-
 function loadScript(src){
   return new Promise((resolve) => {
     const script = document.createElement('script')
@@ -32,7 +31,6 @@ function loadScript(src){
   })
 }
 
-
 function App() {
   const userSignin = useSelector((state) => state.userSignin);
   const { userInfo } = userSignin;
@@ -43,13 +41,15 @@ function App() {
   const closeMenu = () => {
     document.querySelector('.sidebar').classList.remove('open');
   };
+
+
   return (
     <BrowserRouter>
       <div className="grid-container">
         <header className="header">
           <div className="brand">
-            <button onClick={openMenu}>&#9776;</button>
-            <Link to="/"> Basket</Link>
+            <button onClick={openMenu}>&#9776; </button>
+            <Link to="/"><img src="images/logo1.png" className="logo"/></Link>
           </div>
           <div className="header-links">
             <Link to="/cart"><i className="fa fa-shopping-cart" aria-hidden="true" ></i></Link>
@@ -76,7 +76,7 @@ function App() {
           <button className="sidebar-close-button" onClick={closeMenu}>
             x
           </button>
-          <ul className="categories">
+          <ul className="nav-categories">
             <li>
               <Link to="/category/Root Vegetables">Root Vegetables</Link>
             </li>
@@ -89,7 +89,7 @@ function App() {
             </li>
           </ul>
         </aside>
-        <main className="main">
+        <main className="main" style={{width: "100%"}}>
           <div className="content">
             <Route path="/related-product/:id" component={RelatedProductScreen}/>
             <Route path="/orders" component={OrdersScreen} />

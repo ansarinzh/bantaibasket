@@ -3,10 +3,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { createOrder, detailsOrder, payOrder } from '../actions/orderActions';
 import displayRazorpay from '../components/displayRazorpay';
-import PaypalButton from '../components/PaypalButton';
 
+var orderId;
 function OrderScreen(props) {
-
+  
   const userSignin = useSelector(state => state.userSignin);
   const { userInfo } = userSignin;
   const orderPay = useSelector(state => state.orderPay);
@@ -27,16 +27,18 @@ function OrderScreen(props) {
   }
 
   const orderDetails = useSelector(state => state.orderDetails);
-  const { loading, order, error } = orderDetails;
+  const { loading, order, error, razorpay } = orderDetails;
+  
 
   return loading ? <div className="loading"></div> : error ? <div>{error}</div> :
 
     <div>
+      <noscript>{orderId=order._id}</noscript>
       <div className="placeorder">
         <div className="placeorder-info">
         <div>
           <h3>
-            User Info
+            User Info 
           </h3>
           <div>
             Name: {userInfo.name} <br></br>
@@ -53,6 +55,7 @@ function OrderScreen(props) {
           </div>
             <div>
               {order.isDelivered ? "Delivered at " + order.deliveredAt : "Not Delivered."}
+              
             </div>
           </div>
           <div>
@@ -93,7 +96,7 @@ function OrderScreen(props) {
 
                         </div>
                         <div>
-                          Qty: {item.qty}
+                          Qty: {item.qty}<text>{item.unit}</text>
                         </div>
                       </div>
                       <div className="cart-price">
@@ -111,13 +114,13 @@ function OrderScreen(props) {
           <ul>
             <li className="placeorder-actions-payment">
               {loadingPay && <div>Finishing Payment...</div>}
-              {!order.isPaid &&
-                <displayRazorpay
-                  amount={order.totalPrice}
-                  onSuccess={handleSuccessPayment} />                
+              {order.payment.paymentMethod===razorpay ? 
+              !order.isPaid && <button id="btn" onClick={displayRazorpay} className="button">Pay with Razorpay</button>   :
+              "PAY ON DELIVERY"             
               }
+              
             </li>
-            <li><button id="btn" onClick={displayRazorpay} className="button">Pay with Razorpay</button></li>
+            <li></li>
             <li>
               <h3>Order Summary</h3>
             </li>
@@ -149,3 +152,4 @@ function OrderScreen(props) {
 }
 
 export default OrderScreen;
+export {orderId};

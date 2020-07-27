@@ -59,13 +59,15 @@ function CartScreen(props) {
                   <div>
                     Qty:
                   <input type="number" value={item.qty} onChange={(e) => dispatch(addToCart(item.product, e.target.value))}min="1" max={item.countInStock}>
-                      
                     </input>
+                    <text>{item.unit}</text>
                     <button type="button" className="button" onClick={() => removeFromCartHandler(item.product)} >
                       Delete
                     </button>
+                    
                   </div>
                 </div>
+                
                 <div className="cart-price">&#x20B9;{item.selling_price}</div>
               </li>
             ))

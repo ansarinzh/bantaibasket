@@ -61,20 +61,24 @@ function HomeScreen(props) {
       <div className="categories">
       <ul>
           <li>
+          <Link to="/category/Root Vegetables" className="category-link">
             <img src="https://freshpoint.com/wp-content/uploads/2018/12/root-vegetables-and-tubers-freshpoint-produce-101.jpg" className="vegetables-img"/>
-            <Link to="/category/Root Vegetables" className="category-link">Root Vegetables</Link>
+            Root Vegetables</Link>
           </li>
           <li>
+          <Link to="/category/Fruit Vegetables" className="category-link">
           <img src="https://imageresizer.static9.net.au/6-BDj1R_NHECVcD5kLEEgX-8bMA=/600x338/smart/https%3A%2F%2Fprod.static9.net.au%2F_%2Fmedia%2FNetwork%2FImages%2F2017%2F02%2F14%2F10%2F29%2F170214coach_vegetables.jpg" className="vegetables-img"/>
-          <Link to="/category/Fruit Vegetables" className="category-link">Fruit Vegetables</Link>
+          Fruit Vegetables</Link>
         </li>
         <li>
+        <Link to="/category/Flower Vegetables" className="category-link">
         <img src="https://cdn.britannica.com/s:700x500/17/196817-050-6A15DAC3/vegetables.jpg" className="vegetables-img"/>
-          <Link to="/category/Flower Vegetables" className="category-link">Flower Vegetables</Link>
+          Flower Vegetables</Link>
         </li>
         <li>
+        <Link to="/category/Fruits" className="category-link">
         <img src="https://greenmylife-wpengine.netdna-ssl.com/wp-content/uploads/2015/04/Summer-theFruit-season.jpg" className="vegetables-img"/>
-          <Link to="/category/Fruits" className="category-link">Fruits</Link>
+          Fruits</Link>
         </li>
         </ul>
       </div>
@@ -88,6 +92,7 @@ function HomeScreen(props) {
           {products.map((product) => (
             <li key={product._id}>
               <div className="product">
+               
                 <Link to={'/product/' + product._id}>
                   <img
                     className="product-image"
@@ -95,15 +100,18 @@ function HomeScreen(props) {
                     alt="product"
                   />
                 </Link>
+                
                 <noscript>{save= product.mrp_price-product.selling_price}</noscript>
+                <div className="product-info">
                 <div className="product-name">
                   <Link to={'/product/' + product._id}>{product.name}</Link>
                 </div>
                 <div className="product-brand">{product.brand}</div>
                 <div className="product-price"><del>&#x20B9;{product.mrp_price}</del>  &#x20B9;{product.selling_price}</div>
-                <div><p className="discount">You save: <b>{Math.round(save/product.mrp_price *100)} %</b></p></div>
+                <div ><p className="discount">You save: <b>{Math.round(save/product.mrp_price *100)} %</b></p></div>
                 <div className="product-rating">
                   <Rating value={product.rating} text={product.numReviews + ' reviews'} />
+                </div>
                 </div>
               </div>
             </li>

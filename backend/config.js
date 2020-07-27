@@ -10,4 +10,3 @@ export default {
   accessKeyId: process.env.accessKeyId || 'accessKeyId',
   secretAccessKey: process.env.secretAccessKey || 'secretAccessKey',
 };
-

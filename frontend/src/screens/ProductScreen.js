@@ -92,13 +92,14 @@ function ProductScreen(props) {
                 <li>Price: &#x20B9;{product.selling_price}</li>
                 <li>
                   Status:{' '}
-                  {product.countInStock > 0 +'kg'? 'In Stock' : 'Unavailable.'}
+                  {product.countInStock > 0 ? 'In Stock' : 'Unavailable.'}
                 </li>
                 <li>
                   Qty:{' '}
                   <input type="number" value={qty} onChange={(e) => { setQty(e.target.value);}} min="1" max={product.countInStock}>
-                  </input> Kg
+                  </input>{product.unit} 
                 </li>
+
                 <li>
                   {product.countInStock > 0  && (
                     <button onClick={handleAddToCart} className="button primary">
@@ -176,10 +177,12 @@ function ProductScreen(props) {
                     alt="product"
                   />
                 </Link>
+                <noscript>{save= product.mrp_price-product.selling_price}</noscript>
                 <div className="related-product-name">
                   <Link to={'/product/' + product._id}>{product.name}</Link>
                 </div>
                 <div className="related-product-price"><del>&#x20B9;{product.mrp_price}</del>  &#x20B9;{product.selling_price}</div>
+                <div ><p className="discount">You save: <b>{Math.round(save/product.mrp_price *100)} %</b></p></div>
                 <div className="related-product-rating">
                   <Rating value={product.rating} text={product.numReviews + ' reviews'} />
                 </div>
