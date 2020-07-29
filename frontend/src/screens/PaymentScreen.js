@@ -25,7 +25,7 @@ function PaymentScreen(props) {
               <h2>Payment</h2>
             </li>
 
-            <li>
+            {/* <li>
               <div>
                 <input
                   type="radio"
@@ -36,7 +36,7 @@ function PaymentScreen(props) {
                 ></input>
                 <label for="paymentMethod">Pay with Razorpay</label>
               </div>
-            </li>
+            </li> */}
             <li>
               <div>
                 <input

@@ -30,7 +30,7 @@ const orderSchema = new mongoose.Schema({
   payment: paymentSchema,
   itemsPrice: { type: Number },
   taxPrice: { type: Number },
-  shippingPrice: { type: Number },
+  shippingPrice: { type: String },
   totalPrice: { type: Number },
   isPaid: { type: Boolean, default: false },
   paidAt: { type: Date },
