@@ -121,40 +121,39 @@ function ProductsScreen(props) {
 
               <li>
                 <label htmlFor="name">Name</label>
-                <input type="text" name="name" value={name} id="name" onChange={(e) => setName(e.target.value)} required
+                <input type="text" name="name" value={name} id="name" onChange={(e) => setName(e.target.value)} required placeholder="Ex. Onion"
                 ></input>
               </li>
               <li>
                 <label htmlFor="mrp_price">MRP Price</label>
-                <input type="text" name="mrp_price" value={mrp_price} id="mrp_price" onChange={(e) => setMRP_Price(e.target.value)} required></input>
+                <input type="text" name="mrp_price" value={mrp_price} id="mrp_price" onChange={(e) => setMRP_Price(e.target.value)} required placeholder="Ex. 100"></input>
               </li>
               <li>
                 <label htmlFor="selling_price">Selling Price</label>
-                <input type="text" name="selling_price" value={selling_price} id="selling_price" onChange={(e) => setSelling_Price(e.target.value)} required></input>
+                <input type="text" name="selling_price" value={selling_price} id="selling_price" onChange={(e) => setSelling_Price(e.target.value)} required placeholder="Ex. 80"></input>
               </li>
               <li>
                 <label htmlFor="image">Image</label>
-                <input type="text" name="image" value={image} id="image" onChange={(e) => setImage(e.target.value)} required></input>
-                <input type="file" onChange={uploadFileHandler}></input>
+                <input type="text" name="image" value={image} id="image" onChange={(e) => setImage(e.target.value)} required placeholder="Paste image URL"></input>
                 {uploading && <div>Uploading...</div>}
               </li>
               <li>
                 <label htmlFor="brand">Brand</label>
-                <input  type="text" name="brand" value={brand} id="brand" onChange={(e) => setBrand(e.target.value)} required></input>
+                <input  type="text" name="brand" value={brand} id="brand" onChange={(e) => setBrand(e.target.value)} required placeholder="Ex. Bantai Basket"></input>
               </li>
               <li>
                 <label htmlFor="countInStock">CountInStock</label>
-                <input type="text" name="countInStock" value={countInStock} id="countInStock" onChange={(e) => setCountInStock(e.target.value)} required></input>
+                <input type="text" name="countInStock" value={countInStock} id="countInStock" onChange={(e) => setCountInStock(e.target.value)} required placeholder="Ex. 100"></input>
               </li>
               <li>
               <label htmlFor="unit">Unit</label>
-              <input type="text" value={unit} name="unit" id="unit" onChange={(e) => setUnit(e.target.value)} required placeholder='Eg. KG or Pcs'>
+              <input type="text" value={unit} name="unit" id="unit" onChange={(e) => setUnit(e.target.value)} required placeholder='Ex. KG, GM OR Pcs'>
                 
               </input>
               </li>
               <li>
-                <label htmlFor="name">Category</label>
-                <input type="text" name="category" value={category} id="category" onChange={(e) => setCategory(e.target.value)} required></input>
+                <label htmlFor="category">Category</label>
+                <input type="text" name="category" value={category} id="category" onChange={(e) => setCategory(e.target.value)} required placeholder="Vegetables"></input>
               </li>
               <li>
                 <label htmlFor="description">Description</label>

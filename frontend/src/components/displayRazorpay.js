@@ -1,7 +1,7 @@
 import { loadScript } from '../App.js';
 import { orderId } from '../screens/OrderScreen';
 
-const __DEV__ = document.domain === "bantaibasket.herokuapp.com"
+const __DEV__ = document.domain === "bantaibasket.com"
 
 async function displayRazorpay(){
     const res = await loadScript('https://checkout.razorpay.com/v1/checkout.js')
@@ -14,7 +14,7 @@ async function displayRazorpay(){
     console.log(data);
 
     const options = {
-      key: __DEV__ ? 'rzp_test_LyQUQA2sH58KIZ' : 'Production_key' ,
+      key: __DEV__ ? 'rzp_test_uTNWssCDLr4dDM' : 'rzp_live_mJjejLztXul8W1' ,
       amount: data.amount.toString(),
       currency: data.currency,
       order_id: data.id,

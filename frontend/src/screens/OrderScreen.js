@@ -114,7 +114,7 @@ function OrderScreen(props) {
           <ul>
             <li className="placeorder-actions-payment">
               {loadingPay && <div>Finishing Payment...</div>}
-              {order.payment.paymentMethod===razorpay ? 
+              {order.payment.paymentMethod==='razorpay' ? 
               !order.isPaid && <button id="btn" onClick={displayRazorpay} className="button">Pay with Razorpay</button>   :
               "PAY ON DELIVERY"             
               }
