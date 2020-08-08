@@ -11,10 +11,11 @@
 
 .row{position: relative ;display:-ms-flexbox;display:flex;-ms-flex-wrap:wrap;flex-wrap:wrap;margin-right:-15px;margin-left:-15px;}
 
-.col-md-3, .col-md-6, .col-sm-12, .col-md-4,.col-sm-6, .col-md-8{position:relative;width:100%;padding-right:15px;padding-left:15px;}
+.col-md-3, .col-md-6, .col-sm-12, .col-md-4,.col-sm-6, .col-md-8, .col-md-2{position:relative;width:100%;padding-right:15px;padding-left:10px;}
 .col-sm-12{-ms-flex:0 0 100%;flex:0 0 100%;max-width:100%;}
 .col-md-6{-ms-flex:0 0 50%;flex:0 0 50%;max-width:50%;}
 .col-md-3{-ms-flex:0 0 25%;flex:0 0 25%;max-width:25%}
 .col-md-4{-ms-flex:0 0 33.333333%;flex:0 0 33.333333%;max-width:33.333333%}
 .col-sm-6{-ms-flex:0 0 50%;flex:0 0 50%;max-width:50%}
 .col-md-8{-ms-flex:0 0 66.666667%;flex:0 0 66.666667%;max-width:66.666667%}
+.col-md-2{-ms-flex:0 0 15%;flex:0 0 15%;max-width:15%}
