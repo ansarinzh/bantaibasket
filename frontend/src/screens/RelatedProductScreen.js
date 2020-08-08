@@ -6,7 +6,7 @@ import Rating from '../components/Rating';
 import { PRODUCT_REVIEW_SAVE_RESET } from '../constants/productConstants';
 
 function RelatedProductScreen(props) {
-  const [qty, setQty] = useState('');
+  const [qty, setQty] = useState(1);
   const [rating, setRating] = useState(0);
   const [comment, setComment] = useState('');
   const userSignin = useSelector((state) => state.userSignin);
@@ -47,6 +47,24 @@ function RelatedProductScreen(props) {
   const handleAddToCart = () => {
     props.history.push('/cart/' + props.match.params.id + '?qty=' + qty);
   };
+
+  const Increment= ()=>{
+    if (qty < product.countInStock){
+     //setQty(qty+1);
+       setQty((qty) => qty=qty+1)
+    }
+    else{
+      alert("Maximum Limit has reached ")
+    }
+  }
+  const Decrement= ()=>{
+    if (qty > 1){
+      setQty(qty-1);
+    }
+    else{
+      alert("Minimum Limit has reached")
+    }
+  }
 
   return (
     <div>
@@ -95,8 +113,11 @@ function RelatedProductScreen(props) {
                 </li>
                 <li>
                   Qty:{' '}
-                  <input type="number" value={qty} onChange={(e) => { setQty(e.target.value);}} min="1" max={product.countInStock}>
-                  </input> Kg
+                  <div>
+                    <button  onClick={Decrement} className="btn-rem">-</button>
+                    <input type="number" className="input-qty" id="number" value={qty} onChange={(e) => {setQty(e.target.value);}}></input>
+                    <button onClick={Increment} className="btn-add">+</button>{product.unit}
+                  </div>
                 </li>
                 <li>
                   {product.countInStock > 0  && (
