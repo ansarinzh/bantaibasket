@@ -120,7 +120,7 @@ function ProductScreen(props) {
                   Qty:{' '}
                   <div>
                     <button  onClick={Decrement} className="btn-rem">-</button>
-                    <input type="number" className="input-qty" id="number" value={qty} onChange={(e) => {setQty(e.target.value);}}></input>
+                    <input type="number" className="input-qty" id="number" value={qty} onChange={(e) => {setQty(e.target.value);}} min="1" max={product.countInStock}></input>
                     <button onClick={Increment} className="btn-add">+</button>{product.unit}
                   </div>
                 </li>
