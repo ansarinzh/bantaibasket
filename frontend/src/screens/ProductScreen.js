@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, ReactDOM } from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { detailsProduct, saveProductReview, listProducts } from '../actions/productActions';
@@ -6,6 +6,7 @@ import Rating from '../components/Rating';
 import { PRODUCT_REVIEW_SAVE_RESET } from '../constants/productConstants';
 
 function ProductScreen(props) {
+  
   var save;
   const [qty, setQty] = useState(1);
   const [rating, setRating] = useState(0);
@@ -20,7 +21,7 @@ function ProductScreen(props) {
   const productReviewSave = useSelector((state) => state.productReviewSave);
   const { success: productSaveSuccess } = productReviewSave;
   const dispatch = useDispatch();
-
+  
 
   useEffect(() => {
     if (productSaveSuccess) {
@@ -48,11 +49,31 @@ function ProductScreen(props) {
   const handleAddToCart = () => {
     props.history.push('/cart/' + props.match.params.id + '?qty=' + qty);
   };
+ 
+  const Increment= ()=>{
+    if (qty < product.countInStock){
+     //setQty(qty+1);
+       setQty((qty) => qty=qty+1)
+    }
+    else{
+      alert("Maximum Limit has reached ")
+    }
+  }
+  const Decrement= ()=>{
+    if (qty > 1){
+      setQty(qty-1);
+    }
+    else{
+      alert("Minimum Limit has reached")
+    }
+  }
+
 
   return (
+    
     <div>
       <div className="back-to-result">
-        <Link to="/">Back to result</Link>
+        <Link to="/">&laquo; Back</Link>
       </div>
       {loading ? (
         <div className="loading"></div>
@@ -93,13 +114,16 @@ function ProductScreen(props) {
                 <li>
                   Status:{' '}
                   {product.countInStock > 0 ? 'In Stock' : 'Unavailable.'}
+                  
                 </li>
                 <li>
                   Qty:{' '}
-                  <input type="number" value={qty} onChange={(e) => { setQty(e.target.value);}} min="1" max={product.countInStock}>
-                  </input>{product.unit} 
+                  <div>
+                    <button  onClick={Decrement} className="btn-rem">-</button>
+                    <input type="number" className="input-qty" id="number" value={qty} onChange={(e) => {setQty(e.target.value);}} readOnly></input>
+                    <button onClick={Increment} className="btn-add">+</button>{product.unit}
+                  </div>
                 </li>
-
                 <li>
                   {product.countInStock > 0  && (
                     <button onClick={handleAddToCart} className="button primary">

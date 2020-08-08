@@ -51,7 +51,7 @@ function SigninScreen(props) {
           <button type="submit" className="button primary">Signin</button>
         </li>
         <li>
-          New to amazona?
+          New to Bantai Basket?
         </li>
         <li>
           <Link to={redirect === "/" ? "register" : "register?redirect=" + redirect} className="button secondary text-center" >Create your BantaiBasket account</Link>

@@ -16,6 +16,7 @@ import ProfileScreen from './screens/ProfileScreen';
 import OrdersScreen from './screens/OrdersScreen';
 import RelatedProductScreen from './screens/RelatedProductScreen';
 import Footer from './components/footer';
+import AboutUs from './screens/aboutus';
 
 function loadScript(src){
   return new Promise((resolve) => {
@@ -87,11 +88,37 @@ function App() {
             <li>
               <Link to="/category/Flower Vegetables">Flower Vegetables</Link>
             </li>
+            <li>
+            <div className="mobile-header-links" >
+            <Link to="/cart"><i className="fa fa-shopping-cart" aria-hidden="true" ></i>&nbsp; Cart </Link>
+            {userInfo ? (
+              <Link to="/profile"><i class="fa fa-user-circle-o" aria-hidden="true"></i> {userInfo.name}</Link>
+            ) : (
+              <Link to="/signin">Sign In</Link>
+            )}
+            {userInfo && userInfo.isAdmin && (
+              <div className="mobile-dropdown">
+                <a href="#">Admin</a>
+                <ul className="mobile-dropdown-content">
+                  <li>
+                    <Link to="/orders">Orders</Link>
+                    <Link to="/products">Products</Link>
+                  </li>
+                </ul>
+              </div>
+            )}
+          </div>
+            </li>
+            <hr />
+            <li>
+              <Link to="/about-us" >About Us</Link>
+            </li>
           </ul>
         </aside>
         <main className="main" style={{width: "100%"}}>
           <div className="content">
             <Route path="/related-product/:id" component={RelatedProductScreen}/>
+            <Route path="/about-us" component={AboutUs} />
             <Route path="/orders" component={OrdersScreen} />
             <Route path="/profile" component={ProfileScreen} />
             <Route path="/order/:id" component={OrderScreen} />

@@ -1,6 +1,7 @@
 import express from 'express';
 import User from '../models/userModel';
 import { getToken, isAuth } from '../util';
+const bcrypt = require("bcrypt");
 
 
 const router = express.Router();
@@ -26,10 +27,13 @@ router.put('/:id', isAuth, async (req, res) => {
 });
 
 router.post('/signin', async (req, res) => {
+      
   const signinUser = await User.findOne({
     email: req.body.email,
     password: req.body.password,
   });
+  
+      
   if (signinUser) {
     res.send({
       _id: signinUser.id,
@@ -49,6 +53,7 @@ router.post('/register', async (req, res) => {
     email: req.body.email,
     password: req.body.password,
   });
+  
   const newUser = await user.save();
   if (newUser) {
     res.send({
@@ -61,6 +66,7 @@ router.post('/register', async (req, res) => {
   } else {
     res.status(401).send({ message: 'Invalid User Data.' });
   }
+
 });
 
 router.get('/createadmin', async (req, res) => {
@@ -76,6 +82,7 @@ router.get('/createadmin', async (req, res) => {
   } catch (error) {
     res.send({ message: error.message });
   }
+  
 });
 
 export default router;

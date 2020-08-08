@@ -19,16 +19,16 @@ function Footer() {
             </ul>
           </div>
 
-          {/* <div className="col-md-3">
+          { <div className="col-md-2">
             <h6>Quick Links</h6>
             <ul className="footer-links">
-              <li><a href="#">About Us</a></li>
-              <li><a href="#">Contact Us</a></li>
+              <li><a href="/about-us">About Us</a></li>
+              {/* <li><a href="#">Contact Us</a></li>
               <li><a href="#">Contribute</a></li>
               <li><a href="#">Privacy Policy</a></li>
-              <li><a href="#">Sitemap</a></li>
+              <li><a href="#">Sitemap</a></li> */}
             </ul>
-          </div> */}
+          </div> }
         </div>
      
       <div className="row">
@@ -47,7 +47,7 @@ function Footer() {
       <div className="container">
         <div className="row">
           <div className="col-md-8 col-sm-6 ">
-            <p className="copyright-text">Copyright &copy; 2017 All Rights Reserved by 
+            <p className="copyright-text">Copyright &copy; 2020 All Rights Reserved by 
             <a href="/">  BantaiBasket </a>.
             </p>
           </div>
@@ -57,7 +57,7 @@ function Footer() {
               <li><a className="facebook" href="https://www.facebook.com/bantaibasket/"><i className="fa fa-facebook"></i></a></li>
               <li><a className="twitter" href="https://twitter.com/bantaibasket?s=08"><i className="fa fa-twitter"></i></a></li>
               <li><a className="youtube" href="https://www.youtube.com/c/BantaiBasket"><i className="fa fa-youtube"></i></a></li>
-              <li><a className="instagram" href="https://www.instagram.com/p/CCQ1wLpHTQD/?igshid=1vbt2cqlq0d78"><i className="fa fa-instagram"></i></a></li>   
+              <li><a className="instagram" href="https://instagram.com/bantaibasket?igshid=p85hue3slol6"><i className="fa fa-instagram"></i></a></li>   
             </ul>
           </div>
           <div className="col-md-4 col-sm-6">
