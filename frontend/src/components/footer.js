@@ -17,9 +17,11 @@ function Footer() {
               <li><a href="#">Fruits</a></li>
               <li><a href="#">Vegetables</a></li>
             </ul>
-          </div>
-
-          { <div className="col-md-2">
+          </div> 
+        </div>
+        <hr />
+      <div className="row">
+      <div className="col-sm-12 col-md-6">
             <h6>Quick Links</h6>
             <ul className="footer-links">
               <li><a href="/about-us">About Us</a></li>
@@ -28,10 +30,7 @@ function Footer() {
               <li><a href="#">Privacy Policy</a></li>
               <li><a href="#">Sitemap</a></li> */}
             </ul>
-          </div> }
-        </div>
-     
-      <div className="row">
+          </div> 
       <div className="col-md-3">
             <h6>Contact Us</h6>
             <ul className="footer-links">

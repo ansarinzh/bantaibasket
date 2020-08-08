@@ -58,7 +58,7 @@ function HomeScreen(props) {
           </select>
         </li>
       </ul>
-      <div className="categories">
+       {/*<div className="categories">
       <ul>
           <li>
           <Link to="/category/Root Vegetables" className="category-link">
@@ -80,8 +80,8 @@ function HomeScreen(props) {
         <img src="https://greenmylife-wpengine.netdna-ssl.com/wp-content/uploads/2015/04/Summer-theFruit-season.jpg" className="vegetables-img"/>
           Fruits</Link>
         </li>
-        </ul>
-      </div>
+        </ul> 
+      </div> */}
       {loading ? (
         <div className="loading"></div>
       ) : error ? (

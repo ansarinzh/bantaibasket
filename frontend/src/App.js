@@ -79,15 +79,10 @@ function App() {
           </button>
           <ul className="nav-categories">
             <li>
-              <Link to="/category/Root Vegetables">Root Vegetables</Link>
+              <Link to="/"><i class="fa fa-home" aria-hidden="true"></i> &nbsp;Home</Link>
             </li>
 
-            <li>
-              <Link to="/category/Fruit Vegetables">Fruit Vegetables</Link>
-            </li>
-            <li>
-              <Link to="/category/Flower Vegetables">Flower Vegetables</Link>
-            </li>
+            
             <li>
             <div className="mobile-header-links" >
             <Link to="/cart"><i className="fa fa-shopping-cart" aria-hidden="true" ></i>&nbsp; Cart </Link>
