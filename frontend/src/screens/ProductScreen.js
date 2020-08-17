@@ -54,30 +54,20 @@ function ProductScreen(props) {
   // if (qty < product.countInStock){
   const Increment= ()=>{
     if(qty < product.countInStock){
-      setQty(product.unit==="kg" || product.unit === "pcs" ? qty+1 : qty+1);
-      if(product.unit ==="gram"){
-        setQty(product.unit==="gram"? qty+250 : qty+250);
+      setQty(product.unit==="kg" || product.unit ==="KG" || product.unit ==="Kg" || product.unit === "pcs" || product.unit ==="Pcs" || product.unit ==="PCS" ? qty+1 : qty+1);
+      if(product.unit ==="gram" || product.unit ==="Gram" || product.unit ==="gm" ){
+        setQty(product.unit==="gram" || product.unit ==="Gram" || product.unit ==="gm"  ? qty+250 : qty+250);
       }
     }else{
        alert("Maximum Limit has reached ")
      }
-   
-    
-    //  //setQty(qty+1);
-    //   //  setQty((qty) => qty=qty+1)
-    //   setQty( product.unit == "gram" ? qty=qty+250: qty=qty+1)
-    // }
-    
-    // else{
-    //   alert("Maximum Limit has reached ")
-    // }
  }
 
  const Decrement= ()=>{
   if(qty > 0){
-    setQty(product.unit==="kg" || product.unit === "pcs" ? qty-1 : qty-1);
-    if(product.unit ==="gram"){
-      setQty(product.unit==="gram"? qty-250 : qty-250);
+    setQty(product.unit==="kg" || product.unit ==="KG" || product.unit ==="Kg" || product.unit === "pcs" || product.unit ==="Pcs" || product.unit ==="PCS" ? qty-1 : qty-1);
+    if(product.unit ==="gram" || product.unit ==="Gram" || product.unit ==="gm" ){
+      setQty(product.unit==="gram" || product.unit ==="Gram" || product.unit ==="gm" ? qty-250 : qty-250);
     }
   }else{
      alert("Maximum Limit has reached ")
