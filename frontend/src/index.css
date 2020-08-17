@@ -614,6 +614,9 @@ input .input-qty{
     text-align: center;
     border-radius: 5px;
   }
+  .per-kg{
+    font-size: 14px;
+  }
 }
 
 /* forms */

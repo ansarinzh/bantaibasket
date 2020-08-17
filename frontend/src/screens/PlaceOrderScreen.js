@@ -1,28 +1,57 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import CheckoutSteps from '../components/CheckoutSteps';
 import { createOrder } from '../actions/orderActions';
+import axios from 'axios';
 
 
 function PlaceOrderScreen(props) {
-
+  const userSignin = useSelector(state => state.userSignin);
+  const { userInfo } = userSignin;
   const cart = useSelector(state => state.cart);
   const orderCreate = useSelector(state => state.orderCreate);
   const { loading, success, error, order } = orderCreate;
-
+  const [email, setEmail] =useState('')
   const { cartItems, shipping, payment } = cart;
   if (!shipping.address) {
     props.history.push("/shipping");
   } else if (!payment.paymentMethod) {
     props.history.push("/payment");
   }
-  const itemsPrice = cartItems.reduce((a, c) => a + c.selling_price * c.qty, 0);
+  // const itemsPrice = cartItems.reduce((a, c) => a + c.selling_price * c.qty, 0);
   //const shippingPrice = itemsPrice > 100 ? 0 : 10;
   //const taxPrice = 0.15 * itemsPrice;
-  const totalPrice = itemsPrice ;
+  
+  const CartCalc=()=>{
+   
+    var total=0;
+    var gram=0;
+    var kg=0;
+   cartItems.map((data,i)=>{
+    
+     if(data.unit==="KG"){
+       kg+=data.selling_price*data.qty
+     }
+     else if(data.unit==="gram"){
+       gram+= ((data.selling_price*data.qty)/1000)
+       console.log(gram,"gram");
+     }else{
+       return total;
+     }
+     return total;
+   })
+   total=gram+kg;
+   return total
+ }
+ const itemsPrice =CartCalc();
+ const totalPrice = itemsPrice ;
+//  console.log(totalPrice);
+ 
 
   const dispatch = useDispatch();
+
+
 
   const placeOrderHandler = () => {
     // create an order
@@ -38,12 +67,15 @@ function PlaceOrderScreen(props) {
   }, [success]);
 
   return <div>
+    <script>
+
+    </script>
     <CheckoutSteps step1 step2 step3 step4 ></CheckoutSteps>
     <div className="placeorder">
       <div className="placeorder-info">
         <div>
           <h3>
-            Shipping 
+            Shipping {userInfo.email}
           </h3>
           <div>
             {cart.shipping.address}, {cart.shipping.city},
@@ -90,7 +122,7 @@ function PlaceOrderScreen(props) {
                       
                     </div>
                     <div className="cart-price">
-                    &#x20B9;{item.selling_price}
+                    &#x20B9;{item.selling_price}/Kg
                     </div>
                   </li>
                 )
@@ -108,7 +140,7 @@ function PlaceOrderScreen(props) {
           </li>
           <li>
             <div>Items</div>
-            <div>&#x20B9;{itemsPrice}</div>
+            <div>&#x20B9;{CartCalc()}</div>
           </li>
           <li>
             <div>Shipping</div>
@@ -120,7 +152,7 @@ function PlaceOrderScreen(props) {
           </li> */}
           <li>
             <div>Order Total</div>
-            <div>&#x20B9;{totalPrice}</div>
+            <div>&#x20B9;{CartCalc()}</div>
           </li>
           <li>
             <button className="button primary full-width" onClick={placeOrderHandler} >Place Order</button>

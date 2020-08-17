@@ -86,7 +86,7 @@ const deleteOrder = (orderId) => async (dispatch, getState) => {
     });
     dispatch({ type: ORDER_DELETE_SUCCESS, payload: data })
   } catch (error) {
-    dispatch({ type: ORDER_DELETE_FAIL, payload: error.message });
+    dispatch({ type: ORDER_DELETE_FAIL, payload: "Error in deleting order" });
   }
 }
 export { createOrder, detailsOrder, payOrder, listMyOrders, listOrders, deleteOrder };

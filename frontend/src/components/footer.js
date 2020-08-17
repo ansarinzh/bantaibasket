@@ -34,8 +34,8 @@ function Footer() {
       <div className="col-md-3">
             <h6>Contact Us</h6>
             <ul className="footer-links">
-              <li> <a class="fa fa-phone" href="tel:9945976336"> 9945976336</a></li>
-              <li> <a class="fa fa-envelope" href="mailto:bantaibasket@gmail.com"> bantaibasket@gmail.com</a></li>
+              <li> <a className="fa fa-phone" href="tel:9945976336"> 9945976336</a></li>
+              <li> <a className="fa fa-envelope" href="mailto:bantaibasket@gmail.com"> bantaibasket@gmail.com</a></li>
             </ul>
           </div>
       </div>

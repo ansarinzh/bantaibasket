@@ -55,7 +55,7 @@ function App() {
           <div className="header-links">
             <Link to="/cart"><i className="fa fa-shopping-cart" aria-hidden="true" ></i></Link>
             {userInfo ? (
-              <Link to="/profile"><i class="fa fa-user-circle-o" aria-hidden="true"></i> {userInfo.name}</Link>
+              <Link to="/profile"><i className="fa fa-user-circle-o" aria-hidden="true"></i> {userInfo.name}</Link>
             ) : (
               <Link to="/signin">Sign In</Link>
             )}
@@ -79,7 +79,7 @@ function App() {
           </button>
           <ul className="nav-categories">
             <li>
-              <Link to="/"><i class="fa fa-home" aria-hidden="true"></i> &nbsp;Home</Link>
+              <Link to="/"><i className="fa fa-home" aria-hidden="true"></i> &nbsp;Home</Link>
             </li>
 
             
@@ -87,7 +87,7 @@ function App() {
             <div className="mobile-header-links" >
             <Link to="/cart"><i className="fa fa-shopping-cart" aria-hidden="true" ></i>&nbsp; Cart </Link>
             {userInfo ? (
-              <Link to="/profile"><i class="fa fa-user-circle-o" aria-hidden="true"></i> {userInfo.name}</Link>
+              <Link to="/profile"><i className="fa fa-user-circle-o" aria-hidden="true"></i> {userInfo.name}</Link>
             ) : (
               <Link to="/signin">Sign In</Link>
             )}

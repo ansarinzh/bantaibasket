@@ -8,7 +8,7 @@ import { PRODUCT_REVIEW_SAVE_RESET } from '../constants/productConstants';
 function ProductScreen(props) {
   
   var save;
-  const [qty, setQty] = useState(1);
+  const [qty, setQty] = useState(0);
   const [rating, setRating] = useState(0);
   const [comment, setComment] = useState('');
   const userSignin = useSelector((state) => state.userSignin);
@@ -22,7 +22,7 @@ function ProductScreen(props) {
   const { success: productSaveSuccess } = productReviewSave;
   const dispatch = useDispatch();
   
-
+  
   useEffect(() => {
     if (productSaveSuccess) {
       alert('Review submitted successfully.');
@@ -49,17 +49,41 @@ function ProductScreen(props) {
   const handleAddToCart = () => {
     props.history.push('/cart/' + props.match.params.id + '?qty=' + qty);
   };
- 
+  
+  //const data= ( product.unit === "gram") ? (qty=qty+250):"gram hai yeh ";
+  // if (qty < product.countInStock){
   const Increment= ()=>{
-    if (qty < product.countInStock){
-     //setQty(qty+1);
-       setQty((qty) => qty=qty+1)
+    if(qty < product.countInStock){
+      setQty(product.unit==="kg" || product.unit === "pcs" ? qty+1 : qty+1);
+      if(product.unit ==="gram"){
+        setQty(product.unit==="gram"? qty+250 : qty+250);
+      }
+    }else{
+       alert("Maximum Limit has reached ")
+     }
+   
+    
+    //  //setQty(qty+1);
+    //   //  setQty((qty) => qty=qty+1)
+    //   setQty( product.unit == "gram" ? qty=qty+250: qty=qty+1)
+    // }
+    
+    // else{
+    //   alert("Maximum Limit has reached ")
+    // }
+ }
+
+ const Decrement= ()=>{
+  if(qty > 0){
+    setQty(product.unit==="kg" || product.unit === "pcs" ? qty-1 : qty-1);
+    if(product.unit ==="gram"){
+      setQty(product.unit==="gram"? qty-250 : qty-250);
     }
-    else{
-      alert("Maximum Limit has reached ")
-    }
-  }
-  const Decrement= ()=>{
+  }else{
+     alert("Maximum Limit has reached ")
+   }
+}
+  /*const Decrement= ()=>{
     if (qty > 1){
       setQty(qty-1);
     }
@@ -67,7 +91,7 @@ function ProductScreen(props) {
       alert("Minimum Limit has reached")
     }
   }
-
+*/
 
   return (
     

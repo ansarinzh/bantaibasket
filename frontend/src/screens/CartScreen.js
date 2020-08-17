@@ -8,11 +8,14 @@ function CartScreen(props) {
   const cart = useSelector(state => state.cart);
   var countInStock;
   const { cartItems } = cart;
+  const productDetails = useSelector((state) => state.productDetails);
+  const { product } = productDetails;
   const productId = props.match.params.id;
   const qty = props.location.search ? Number(props.location.search.split("=")[1]) : 1;
   const dispatch = useDispatch();
   const removeFromCartHandler = (productId) => {
     dispatch(removeFromCart(productId));
+    
   }
   useEffect(() => {
     if (productId) {
@@ -23,6 +26,32 @@ function CartScreen(props) {
   const checkoutHandler = () => {
     props.history.push("/signin?redirect=shipping");
   }
+
+  const CartCalc=()=>{
+   
+         var total=0;
+         var gram=0;
+         var kg=0;
+        cartItems.map((data,i)=>{
+         
+          if(data.unit==="KG" || data.unit==="pcs" || data.unit==="PCS" || data.unit==="Kg" || data.unit==="Pcs" || data.unit==="kg"){
+            kg+=data.selling_price*data.qty
+          }
+          else if(data.unit==="gram" || data.unit==="Gram"){
+            gram+= ((data.selling_price*data.qty)/1000)
+            console.log(gram,"gram");
+            
+          }else{
+            return total;
+          }
+         
+          return total;
+        })
+
+        total=gram+kg;
+        return total
+        
+      }
      
   return <div className="cart">
     <div className="cart-list">
@@ -67,17 +96,21 @@ function CartScreen(props) {
                     </button>
                   </div>
                 </div>
-              <div className="cart-price">&#x20B9;{item.selling_price}</div>
+              <div className="cart-price">&#x20B9;{item.selling_price}<text className="per-kg">/Kg</text></div>
+              
               </li>
             ))
         }
       </ul>
     </div>
+    
     <div className="cart-action">
       <h3>
-        Subtotal ( {cartItems.reduce((a, c) => a + '-' + c.qty, 0)} items)
+        
+        Subtotal 
         :
-        &#x20B9;  {cartItems.reduce((a, c) => a + c.selling_price * c.qty, 0)} 
+        &#x20B9;{CartCalc()} 
+        
       </h3>
       <button onClick={checkoutHandler} className="button primary full-width" disabled={cartItems.length === 0}>
         Proceed to Checkout
@@ -87,5 +120,6 @@ function CartScreen(props) {
       
   </div>
 }
+
 
 export default CartScreen;

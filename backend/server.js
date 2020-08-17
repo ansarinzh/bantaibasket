@@ -7,10 +7,14 @@ import userRoute from './routes/userRoute';
 import productRoute from './routes/productRoute';
 import uploadRoute from './routes/uploadRoute';
 import orderRoute, { newOrderCreated } from './routes/orderRoute';
+require('dotenv').config();
 
 const cors = require('cors')
 const shortid = require('shortid')
 const Razorpay = require('razorpay')
+const nodemailer = require('nodemailer');
+//const { sendEmail } = require('mail');
+
 
 const mongodbUrl = config.MONGODB_URL;
 mongoose
@@ -30,6 +34,7 @@ app.use('/api/orders', orderRoute);
 app.get('/api/config/paypal', (req, res) => {
   res.send(config.PAYPAL_CLIENT_ID);
 });
+app.use(cors());
 app.use('/uploads', express.static(path.join(__dirname, '/../uploads')));
 app.use(express.static(path.join(__dirname, '/../frontend/build')));
 app.get('*', (req, res) => {
@@ -65,6 +70,55 @@ try{
 }
 
 })
+
+// email
+
+// app.post('/api/sendmail', (req,res)=>{
+
+//   let data=req.body;
+  
+//   let smtpTransport = nodemailer.createTransport({
+//      service:'gmail' ,
+//      //port:465,
+//      auth:{
+//       user:'',
+//       pass:''
+//      }
+//   });
+  
+//   let mailOptions={
+//     from:'nadeemansariz2000@gmail.com',
+//     to:"mohammednadeem010@gmail.com",
+//     subject:`Message from ${data.name}`,
+//     html:`
+    
+//     <h3>Informations</h3>
+//     <ul>
+//       <li>Name: ${data.name}</li>
+//       <li>Lastname: ${data.lastname}</li>
+//       <li>Email: ${data.email}</li>
+    
+//     </ul> 
+//     <h3>Message</h3> 
+//     <p>${data.message}</p>  
+    
+//     `
+
+// };
+//   smtpTransport.sendMail(mailOptions, (error, response)=>{
+  
+//     if(error){
+//         res.send(error)
+//         console.log(error)
+//     }
+//     else{
+//       console.log('Email sent');
+//         res.send('Success')
+//     }
+
+//     smtpTransport.close();
+// });
+// })
 
 
 
