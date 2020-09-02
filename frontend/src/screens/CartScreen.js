@@ -96,7 +96,7 @@ function CartScreen(props) {
                     </button>
                   </div>
                 </div>
-              <div className="cart-price">&#x20B9;{item.selling_price}<text className="per-kg">/Kg</text></div>
+              <div className="cart-price">&#x20B9;{item.selling_price}</div>
               
               </li>
             ))
