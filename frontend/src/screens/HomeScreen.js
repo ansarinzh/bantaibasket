@@ -9,9 +9,10 @@ import Rating from '../components/Rating';
 
 function HomeScreen(props) {
   var save;
-  var myelement;
   const [searchKeyword, setSearchKeyword] = useState('');
   const [sortOrder, setSortOrder] = useState('');
+  const [kg, setKg] = useState([]);
+  const [gram, setGram] = useState([]);
   const category = props.match.params.id ? props.match.params.id : '';
   const productList = useSelector((state) => state.productList);
   const { mrp_price, selling_price, products, loading, error } = productList;
@@ -89,8 +90,10 @@ function HomeScreen(props) {
       ) : (  
 
         <ul className="products">
-          {products.map((product) => (
-            <li key={product._id}>
+          {products.map((product) => {
+        
+            return(
+              <li key={product._id}>
               <div className="product">
                
                 <Link to={'/product/' + product._id}>
@@ -107,7 +110,17 @@ function HomeScreen(props) {
                   <Link to={'/product/' + product._id}>{product.name}</Link>
                 </div>
                 <div className="product-brand">{product.brand}</div>
-                <div className="product-price"><del>&#x20B9;{product.mrp_price}</del>  &#x20B9;{product.selling_price}</div>
+
+                {
+                  product.unit==='Gram' || product.unit==='gram' || product.unit==='GM' || product.unit==='gm' ?(<div className="product-price"><del>&#x20B9;{product.mrp_price}</del> &#x20B9;{product.selling_price/4}</div>):null
+                }
+                {
+                  product.unit==='KG' || product.unit==="Kg" || product.unit==="Pcs" || product.unit==="PCS" ?(<div className="product-price"><del>&#x20B9;{product.mrp_price}</del> &#x20B9; {product.selling_price}</div>):null
+                }
+
+                
+                {/* <div className="product-price"><del>&#x20B9;{product.mrp_price}</del>  &#x20B9;{product.unit==='KG'?product.selling_price:null}</div>
+                <div className="product-price"><del>&#x20B9;{product.mrp_price}</del>  &#x20B9;{product.unit==='Gram'?(product.selling_price/4):null}</div> */}
                 <div ><p className="discount">You save: <b>{Math.round(save/product.mrp_price *100)} %</b></p></div>
                 <div className="product-rating">
                   <Rating value={product.rating} text={product.numReviews + ' reviews'} />
@@ -115,7 +128,10 @@ function HomeScreen(props) {
                 </div>
               </div>
             </li>
-          ))}
+            )
+            
+})}
+         
         </ul>
       )}
     </>

@@ -41,11 +41,15 @@ function App() {
   };
   const closeMenu = () => {
     document.querySelector('.sidebar').classList.remove('open');
+    // document.removeEventListener("click", handleOutsideClick, false);
   };
-
+  const handleOutsideClick=()=>{
+    document.querySelector('.sidebar').classList.remove('open');
+  }
+  
 
   return (
-    <BrowserRouter>
+    <BrowserRouter onClick={handleOutsideClick} >
       <div className="grid-container">
         <header className="header">
           <div className="brand">
@@ -109,8 +113,9 @@ function App() {
               <Link to="/about-us" >About Us</Link>
             </li>
           </ul>
+          
         </aside>
-        <main className="main" style={{width: "100%"}}>
+        <main className="main" style={{width: "100%"}} onClick={closeMenu}>
           <div className="content">
             <Route path="/related-product/:id" component={RelatedProductScreen}/>
             <Route path="/about-us" component={AboutUs} />

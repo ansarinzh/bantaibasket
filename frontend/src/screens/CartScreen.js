@@ -37,7 +37,7 @@ function CartScreen(props) {
           if(data.unit==="KG" || data.unit==="pcs" || data.unit==="PCS" || data.unit==="Kg" || data.unit==="Pcs" || data.unit==="kg"){
             kg+=data.selling_price*data.qty
           }
-          else if(data.unit==="gram" || data.unit==="Gram"){
+          else if(data.unit==="gram" || data.unit==="Gram" || data.unit==="gm" || data.unit==="Gm"){
             gram+= ((data.selling_price*data.qty)/1000)
             console.log(gram,"gram");
             

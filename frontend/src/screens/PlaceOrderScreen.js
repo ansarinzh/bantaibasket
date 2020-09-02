@@ -30,12 +30,12 @@ function PlaceOrderScreen(props) {
     var kg=0;
    cartItems.map((data,i)=>{
     
-     if(data.unit==="KG"){
+     if(data.unit==="KG" || data.unit==="Kg" || data.unit==="Pcs" || data.unit==="PCS"){
        kg+=data.selling_price*data.qty
      }
-     else if(data.unit==="gram"){
+     else if(data.unit==="Gram" || data.unit==="Gm" || data.unit==="gram" || data.unit==="gm"){
        gram+= ((data.selling_price*data.qty)/1000)
-       console.log(gram,"gram");
+       //console.log(gram,"gram");
      }else{
        return total;
      }
@@ -47,6 +47,7 @@ function PlaceOrderScreen(props) {
  const itemsPrice =CartCalc();
  const totalPrice = itemsPrice ;
 //  console.log(totalPrice);
+//  console.log(itemsPrice);
  
 
   const dispatch = useDispatch();

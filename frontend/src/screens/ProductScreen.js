@@ -50,13 +50,12 @@ function ProductScreen(props) {
     props.history.push('/cart/' + props.match.params.id + '?qty=' + qty);
   };
   
-  //const data= ( product.unit === "gram") ? (qty=qty+250):"gram hai yeh ";
-  // if (qty < product.countInStock){
+  
   const Increment= ()=>{
     if(qty < product.countInStock){
       setQty(product.unit==="kg" || product.unit ==="KG" || product.unit ==="Kg" || product.unit === "pcs" || product.unit ==="Pcs" || product.unit ==="PCS" ? qty+1 : qty+1);
       if(product.unit ==="gram" || product.unit ==="Gram" || product.unit ==="gm" ){
-        setQty(product.unit==="gram" || product.unit ==="Gram" || product.unit ==="gm"  ? qty+250 : qty+250);
+        setQty(product.unit==="gram" || product.unit ==="Gram" || product.unit ==="gm" || product.unit ==="Gm" ? qty+250 : qty+250);
       }
     }else{
        alert("Maximum Limit has reached ")
@@ -66,22 +65,14 @@ function ProductScreen(props) {
  const Decrement= ()=>{
   if(qty > 0){
     setQty(product.unit==="kg" || product.unit ==="KG" || product.unit ==="Kg" || product.unit === "pcs" || product.unit ==="Pcs" || product.unit ==="PCS" ? qty-1 : qty-1);
-    if(product.unit ==="gram" || product.unit ==="Gram" || product.unit ==="gm" ){
+    if(product.unit ==="gram" || product.unit ==="Gram" || product.unit ==="gm" || product.unit==="Gm"){
       setQty(product.unit==="gram" || product.unit ==="Gram" || product.unit ==="gm" ? qty-250 : qty-250);
     }
   }else{
      alert("Maximum Limit has reached ")
    }
 }
-  /*const Decrement= ()=>{
-    if (qty > 1){
-      setQty(qty-1);
-    }
-    else{
-      alert("Minimum Limit has reached")
-    }
-  }
-*/
+ 
 
   return (
     
@@ -114,7 +105,20 @@ function ProductScreen(props) {
                   </a>
                 </li>
                 <li>
-                  Price: <b><del>&#x20B9;{product.mrp_price}</del>  &#x20B9;{product.selling_price}</b>
+
+                Price:
+                {
+                  product.unit==='Gram' || product.unit==='Gm' ?(<div className="product-price"><del>&#x20B9;{product.mrp_price}</del> &#x20B9;{product.selling_price/4}</div>):null
+                }
+                {
+                  product.unit==='KG' || product.unit==="Kg" || product.unit==="Pcs" || product.unit==="PCS" ?(<div className="product-price"><del>&#x20B9;{product.mrp_price}</del> &#x20B9; {product.selling_price}</div>):null
+                }
+
+
+
+
+
+                   {/* <b><del>&#x20B9;{product.mrp_price}</del>  &#x20B9;{product.selling_price}</b> */}
                 </li>
                 <li>
                   Description:
@@ -124,7 +128,14 @@ function ProductScreen(props) {
             </div>
             <div className="details-action">
               <ul>
-                <li>Price: &#x20B9;{product.selling_price}</li>
+                <li>Price:
+                {
+                  product.unit==='Gram' || product.unit==='Gm' || product.unit==='gram' || product.unit==='gm'?(<div> &#x20B9;{product.selling_price/4}</div>):null
+                }
+                {
+                  product.unit==='KG' || product.unit==="Kg" || product.unit==="Pcs" || product.unit==="PCS" ?(<div className="product-price"> &#x20B9; {product.selling_price}</div>):null
+                }
+                </li>
                 <li>
                   Status:{' '}
                   {product.countInStock > 0 ? 'In Stock' : 'Unavailable.'}
@@ -219,7 +230,19 @@ function ProductScreen(props) {
                 <div className="related-product-name">
                   <Link to={'/product/' + product._id}>{product.name}</Link>
                 </div>
-                <div className="related-product-price"><del>&#x20B9;{product.mrp_price}</del>  &#x20B9;{product.selling_price}</div>
+
+                {
+                  product.unit==='Gram' || product.unit==='Gm' || product.unit==="gram" || product.unit==="gram" ?(<div className="product-price"><del>&#x20B9;{product.mrp_price}</del> &#x20B9;{product.selling_price/4}</div>):null
+                }
+                {
+                  product.unit==='KG' || product.unit==="Kg" || product.unit==="Pcs" || product.unit==="PCS" ?(<div className="product-price"><del>&#x20B9;{product.mrp_price}</del> &#x20B9; {product.selling_price}</div>):null
+                }
+
+
+
+
+
+                {/* <div className="related-product-price"><del>&#x20B9;{product.mrp_price}</del>  &#x20B9;{product.selling_price}</div> */}
                 <div ><p className="discount">You save: <b>{Math.round(save/product.mrp_price *100)} %</b></p></div>
                 <div className="related-product-rating">
                   <Rating value={product.rating} text={product.numReviews + ' reviews'} />

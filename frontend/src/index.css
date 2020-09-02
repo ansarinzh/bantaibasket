@@ -309,7 +309,7 @@ a > .rating > span:last-child {
 .sidebar {
   list-style-type: none;
   border: solid green 1px;
-  position: fixed;
+  position: absolute;
   transition: all 0.5s;
   transform: translateX(-30rem);
   width: 27rem;

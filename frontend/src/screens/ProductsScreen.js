@@ -57,6 +57,9 @@ function ProductsScreen(props) {
     setCategory(product.category);
     setCountInStock(product.countInStock);
     setUnit(product.unit);
+    window.scrollTo({
+      top: 0
+  })
   };
   const submitHandler = (e) => {
     e.preventDefault();
@@ -99,6 +102,7 @@ function ProductsScreen(props) {
         setUploading(false);
       });
   };
+
   return (
     <div className="content content-margined">
       <div className="product-header">
@@ -108,7 +112,7 @@ function ProductsScreen(props) {
         </button>
       </div>
       {modalVisible && (
-        <div className="form">
+        <div className="form" id="form">
           <form onSubmit={submitHandler}>
             <ul className="form-container">
               <li>
