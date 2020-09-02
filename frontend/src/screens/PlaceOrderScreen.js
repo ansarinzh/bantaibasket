@@ -123,7 +123,7 @@ function PlaceOrderScreen(props) {
                       
                     </div>
                     <div className="cart-price">
-                    &#x20B9;{item.selling_price}/Kg
+                    &#x20B9;{item.selling_price}
                     </div>
                   </li>
                 )
