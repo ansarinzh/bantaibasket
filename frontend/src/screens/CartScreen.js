@@ -96,7 +96,19 @@ function CartScreen(props) {
                     </button>
                   </div>
                 </div>
-              <div className="cart-price">&#x20B9;{item.selling_price}</div>
+              <div className="cart-price">
+              {
+                  item.unit==='Gram' || item.unit==='Gm' ?(<div className="product-price"> &#x20B9;{item.selling_price/4}</div>):null
+                }
+                {
+                  item.unit==='KG' || item.unit==="Kg" || item.unit==="Pcs" || item.unit==="PCS" ?(<div className="product-price"> &#x20B9; {item.selling_price}</div>):null
+                }
+
+
+
+
+
+              </div>
               
               </li>
             ))

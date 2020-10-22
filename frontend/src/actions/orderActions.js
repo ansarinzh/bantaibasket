@@ -13,6 +13,7 @@ const createOrder = (order) => async (dispatch, getState) => {
         Authorization: ' Bearer ' + userInfo.token
       }
     });
+    
     dispatch({ type: ORDER_CREATE_SUCCESS, payload: newOrder });
   } catch (error) {
     dispatch({ type: ORDER_CREATE_FAIL, payload: error.message });
@@ -56,6 +57,7 @@ const detailsOrder = (orderId) => async (dispatch, getState) => {
       headers:
         { Authorization: 'Bearer ' + userInfo.token }
     });
+    console.log(data,"New Order");
     dispatch({ type: ORDER_DETAILS_SUCCESS, payload: data })
   } catch (error) {
     dispatch({ type: ORDER_DETAILS_FAIL, payload: error.message });

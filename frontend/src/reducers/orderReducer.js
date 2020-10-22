@@ -21,6 +21,7 @@ function orderCreateReducer(state = {}, action) {
 
 
 function orderDetailsReducer(state = {
+  
   order: {
     orderItems: [],
     shipping: {},
@@ -31,6 +32,7 @@ function orderDetailsReducer(state = {
     case ORDER_DETAILS_REQUEST:
       return { loading: true };
     case ORDER_DETAILS_SUCCESS:
+      console.log(action.payload,'from order')
       return { loading: false, order: action.payload };
     case ORDER_DETAILS_FAIL:
       return { loading: false, error: action.payload };

@@ -13,7 +13,7 @@ function PlaceOrderScreen(props) {
   const orderCreate = useSelector(state => state.orderCreate);
   const { loading, success, error, order } = orderCreate;
   const [email, setEmail] =useState('')
-  const { cartItems, shipping, payment } = cart;
+  const { cartItems, shipping, payment, unit } = cart;
   if (!shipping.address) {
     props.history.push("/shipping");
   } else if (!payment.paymentMethod) {
@@ -41,11 +41,16 @@ function PlaceOrderScreen(props) {
      }
      return total;
    })
+   
    total=gram+kg;
-   return total
+   return total;
+   
  }
  const itemsPrice =CartCalc();
  const totalPrice = itemsPrice ;
+ 
+//  const unit=cartItems.map((item,i)=>{item.unit});
+//  const unit=data.unit;
 //  console.log(totalPrice);
 //  console.log(itemsPrice);
  
@@ -123,7 +128,15 @@ function PlaceOrderScreen(props) {
                       
                     </div>
                     <div className="cart-price">
-                    &#x20B9;{item.selling_price}
+
+                    {
+                  item.unit==='Gram' || item.unit==='Gm' ?(<div className="product-price"> &#x20B9;{item.selling_price/4}</div>):null
+                }
+                {
+                  item.unit==='KG' || item.unit==="Kg" || item.unit==="Pcs" || item.unit==="PCS" ?(<div className="product-price"> &#x20B9; {item.selling_price}</div>):null
+                }
+
+
                     </div>
                   </li>
                 )

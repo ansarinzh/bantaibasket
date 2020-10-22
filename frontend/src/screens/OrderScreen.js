@@ -77,11 +77,14 @@ function OrderScreen(props) {
                   Price
           </div>
               </li>
+              
               {
                 order.orderItems.length === 0 ?
                   <div>
                     Cart is empty
+                    
           </div>
+          
                   :
                   order.orderItems.map(item =>
                     <li key={item._id}>
@@ -96,14 +99,28 @@ function OrderScreen(props) {
 
                         </div>
                         <div>
+                          
                           Qty: {item.qty}<text>{item.unit}</text>
                         </div>
                       </div>
                       <div className="cart-price">
-                      &#x20B9;{item.selling_price}
+                      
+
+                      {
+                  item.unit==='Gram' || item.unit==='Gm' ?(<div className="product-price"> &#x20B9;{item.selling_price/4}</div>):null
+                }
+                {
+                  item.unit==='KG' || item.unit==="Kg" || item.unit==="Pcs" || item.unit==="PCS" ?(<div className="product-price"> &#x20B9; {item.selling_price}</div>):null
+                }
+            {/* console.log(order); */}
+
+
+
                       </div>
                     </li>
                   )
+                  
+                  
               }
             </ul>
           </div>
@@ -141,7 +158,7 @@ function OrderScreen(props) {
               <div>&#x20B9;{order.totalPrice}</div>
             </li>
           </ul>
-
+        
 
 
         </div>
@@ -150,6 +167,8 @@ function OrderScreen(props) {
     </div>
 
 }
+
+
 
 export default OrderScreen;
 export {orderId};
