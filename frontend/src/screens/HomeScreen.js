@@ -102,6 +102,7 @@ function HomeScreen(props) {
                     src={product.image}
                     alt="product"
                   />
+                  
                 </Link>
                 
                 <noscript>{save= product.mrp_price-product.selling_price}</noscript>

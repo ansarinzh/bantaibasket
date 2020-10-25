@@ -6,7 +6,9 @@ import Rating from '../components/Rating';
 import { PRODUCT_REVIEW_SAVE_RESET } from '../constants/productConstants';
 
 function ProductScreen(props) {
-  
+  window.scrollTo({
+    top: 0
+})
   var save;
   const [qty, setQty] = useState(0);
   const [rating, setRating] = useState(0);

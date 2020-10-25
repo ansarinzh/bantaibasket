@@ -532,7 +532,7 @@ input .input-qty{
   align-items: flex-start;
 }
 .cart-list {
-  flex: 3 1 80rem;
+  flex: 3 2 80rem;
 }
 .cart-action {
   flex: 1 1 20rem;
@@ -568,9 +568,7 @@ input .input-qty{
   flex: 8 1;
 }
 .cart-price {
-  flex: 1 1;
-  font-size: 2.5rem;
-  text-align: right;
+  font-size: 2rem;
 }
 .btn-shopping{
   display: block;
@@ -616,6 +614,9 @@ input .input-qty{
   }
   .per-kg{
     font-size: 14px;
+  }
+  .cart-price {
+    font-size: 1.6rem;
   }
 }
 

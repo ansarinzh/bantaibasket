@@ -104,13 +104,13 @@ function OrderScreen(props) {
                         </div>
                       </div>
                       <div className="cart-price">
-                      
+                      {item.selling_price} x {item.qty}{item.unit} =
 
                       {
-                  item.unit==='Gram' || item.unit==='Gm' ?(<div className="product-price"> &#x20B9;{item.selling_price/4}</div>):null
+                  item.unit==='Gram' || item.unit==='Gm' ?(<b className="product-price"> &#x20B9;{item.selling_price/4 * item.qty/250}</b>):null
                 }
                 {
-                  item.unit==='KG' || item.unit==="Kg" || item.unit==="Pcs" || item.unit==="PCS" ?(<div className="product-price"> &#x20B9; {item.selling_price}</div>):null
+                  item.unit==='KG' || item.unit==="Kg" || item.unit==="Pcs" || item.unit==="PCS" ?(<b className="product-price"> &#x20B9; {item.selling_price * item.qty}</b>):null
                 }
             {/* console.log(order); */}
 
