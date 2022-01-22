@@ -4,6 +4,9 @@ import axios from 'axios';
 import { useSelector, useDispatch } from 'react-redux';
 import { listProducts } from '../actions/productActions';
 import Rating from '../components/Rating';
+import ControlledCarousel from '../components/Carousel';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 
 
 
@@ -59,6 +62,8 @@ function HomeScreen(props) {
           </select>
         </li>
       </ul>
+      <ControlledCarousel />
+      
        {/*<div className="categories">
       <ul>
           <li>

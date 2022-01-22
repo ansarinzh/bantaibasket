@@ -122,6 +122,6 @@ try{
 
 
 
-app.listen(config.PORT, () => {
+app.listen(5000, () => {
   console.log('Server started at http://localhost:6000');
 });
